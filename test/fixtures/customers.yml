@@ -2,8 +2,12 @@
 
 one:
   name: MyString
-  description: MyText
+  address: MyText
+  age: 1
+  num: 1
 
 two:
   name: MyString
-  description: MyText
+  address: MyText
+  age: 1
+  num: 1

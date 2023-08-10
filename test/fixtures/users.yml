@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  type: MyText
   number: 1
 
 two:
   name: MyString
-  type: MyText
   number: 1

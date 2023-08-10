@@ -10,21 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_115935) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_133151) do
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
+    t.integer "age"
+    t.integer "num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers_products", id: false, force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "product_id", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "part_number"
+    t.integer "user_id", null: false
+    t.decimal "price", precision: 5, scale: 2
+    t.string "supplier_type", null: false
+    t.integer "supplier_id", null: false
+    t.index ["part_number"], name: "index_products_on_part_number"
+    t.index ["supplier_type", "supplier_id"], name: "index_products_on_supplier"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.text "type"
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "products", "users"
 end
